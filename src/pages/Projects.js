@@ -9,13 +9,8 @@ function Projects() {
 
   let navigate = useNavigate()
 
-  const particlesInit = (main) => {
-    console.log(main);
-  };
-
-  const particlesLoaded = (container) => {
-    console.log(container);
-  };
+  const particlesInit = (main) => {console.log(main)};
+  const particlesLoaded = (container) => {console.log(container)};
 
   let projects = {
     "berkealtiparmakk": {
@@ -40,9 +35,6 @@ function Projects() {
     }
 
   } 
-
-
-
 
   return (
     <>

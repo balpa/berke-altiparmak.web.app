@@ -11,15 +11,8 @@ function Home() {
 
   let navigate = useNavigate()
 
-  const particlesInit = (main) => {
-    console.log(main);
-
-    // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
-  };
-
-  const particlesLoaded = (container) => {
-    console.log(container);
-  };
+  const particlesInit = (main) => {console.log(main)};
+  const particlesLoaded = (container) => {console.log(container)};
 
   const animation = useAnimation()
 
@@ -28,14 +21,9 @@ function Home() {
         await animation.start({ minHeight: '50vh' })
         await animation.start({ borderRadius: '35px'})
         await animation.start({ backgroundColor: '#f9dc0b'})
-
     }
 
-  useEffect(() => {
-    sequence()
-  },[])
-
-
+  useEffect(() => {sequence()},[])
 
   return (
     <>

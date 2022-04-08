@@ -10,13 +10,9 @@ function ProjectCard(props) {
         await animation.start({ transform: 'scale(1.1)' })
         await animation.start({ transform: 'scale(1)' })
         await animation.start({ borderRadius: '0px 60px 0px 60px'})
-
-
     }
 
-  useEffect(() => {
-    sequence()
-  },[])
+  useEffect(() => {sequence()},[])
 
   return (
     <>
