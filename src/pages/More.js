@@ -1,17 +1,12 @@
-import React, { useEffect } from 'react'
-import Particles from 'react-tsparticles'
+import React from 'react'
 import '../App.css'
-import {AiOutlineInstagram, AiOutlineLinkedin, AiOutlineYoutube, AiFillGithub} from 'react-icons/ai'
-import {useNavigate} from 'react-router-dom'
+import Particles from "react-tsparticles";
+import { useNavigate } from 'react-router-dom'
 import {motion, useAnimation} from 'framer-motion'
-import TypeInfo from '../components/TypeInfo'
-import TypeName from '../components/TypeName'
 import Clock from '../components/Clock'
-import Weather from '../components/Weather'
+import Weather from '../components/Weather';
 
-
-
-function Home() {
+function More() {
 
   let navigate = useNavigate()
 
@@ -19,19 +14,15 @@ function Home() {
   const particlesLoaded = (container) => {console.log(container)};
 
   const animation = useAnimation()
-
   async function sequence() {
-        await animation.start({ width: '50vw' })
-        await animation.start({ minHeight: '50vh' })
-        await animation.start({ borderRadius: '35px'})
-        await animation.start({ backgroundColor: '#f9dc0b'})
+        await animation.start({ height: '60vh' })
+        await animation.start({ width: '70vw' })
     }
-
-  useEffect(() => {sequence()},[])
+  React.useEffect(() => {sequence()},[])
 
   return (
     <>
-     <Particles
+    <Particles
       id="tsparticles"
       init={particlesInit}
       loaded={particlesLoaded}
@@ -113,36 +104,19 @@ function Home() {
         detectRetina: true,
       }}
     />
-    <div id='time'><Clock /></div>
-    <div id='weather'><Weather /></div>
-    <div id='pagenamespan'>Home</div>
-    <div className='top'>Berke Altıparmak</div>
-    <div style={{top:'50%',left:'50%',transform:'translate(-50%,-50%)',position:'absolute'}}>
-      <motion.div id='motion-home-div' animate={animation} transition={{duration: 0.5}}>
-        <motion.div animate={{opacity:[0,0,0,1]}} transition={{duration: 3}}>
-          <TypeName />
-           <br/>
-           <br/>
-          <TypeInfo  />
-          
+      <div id='time'><Clock /></div>
+      <div id='weather'><Weather /></div>
+      <div id='pagenamespan'>More</div>
+      <div className='top'>Berke Altıparmak</div>
+      <div className='middle'>
+        <motion.div id='more-div' animate={animation} transition={{duration: 0.5}}>
+
         </motion.div>
-      </motion.div>
-    </div>
-    <div className='socialmedia-container'>
-      <div id='icons-container'>
-        
-        <a href='https://www.github.com/balpa' target='_blank' rel='noreferrer'><AiFillGithub /></a>
-        <a href='https://www.instagram.com/berkealtiparmakk' target='_blank' rel='noreferrer'><AiOutlineInstagram /></a>
-        <a href='https://www.linkedin.com/in/berkealtiparmak/' target='_blank' rel='noreferrer'><AiOutlineLinkedin /></a>
-        <a href='https://www.youtube.com/berkealtiparmak' target='_blank' rel='noreferrer'><AiOutlineYoutube /></a>
       </div>
-      <div id='empty-line'></div>
-    </div>
-    <button id='about-button' onClick={()=> {navigate('/about')}}>About</button>
-    <button id='projects-button' onClick={()=> {navigate('/projects')}}>Projects</button>
-    <button id='more-button' onClick={()=> {navigate('/more')}}>More</button>
+      <div className='bottom'></div>
+      <button id='home-button' onClick={()=> {navigate('/home')}}>Home</button>
     </>
   )
 }
 
-export default Home
+export default More

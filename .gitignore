@@ -21,6 +21,7 @@
 .firebaserc
 firebase.json
 .gitignore
+/.firebase
 
 npm-debug.log*
 yarn-debug.log*

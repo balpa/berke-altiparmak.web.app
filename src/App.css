@@ -206,7 +206,21 @@ a:link {
 #home-button:hover{
     transform: rotate(-90deg) scale(1.1) translate(0, -70%);
     cursor: pointer;
-} 
+}#more-button{
+    z-index: 10;
+    width: 125px;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 40px;
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    border: none;
+    transition: 0.3s;
+}
+#more-button:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}  
 
 #motion-home-div{
     width: 100px;
@@ -269,6 +283,25 @@ a:link {
     color: red
 }
 
+#more-div{
+    width: 10px;
+    height: 0px;
+    background-color: rgba(0, 0, 0, 0.188);
+}
 
+#time{
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: clamp(8px, 2vw, 14px);
+
+}
+#weather{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: clamp(10px, 2vw, 15px);
+
+}
 /* KUBİLAY RENK
 "rgb(139, 33, 33)" */

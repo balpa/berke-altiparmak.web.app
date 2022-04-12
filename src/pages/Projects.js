@@ -2,10 +2,13 @@ import React from 'react'
 import '../App.css'
 import Particles from "react-tsparticles";
 import { useNavigate } from 'react-router-dom'
-import ProjectCard from '../components/ProjectCard';
-
+import ProjectCard from '../components/ProjectCard'
+import Clock from '../components/Clock'
+import Weather from '../components/Weather';
 
 function Projects() {
+
+  let PROJECT_PAGE_COLOR = "rgb(139, 33, 33)"
 
   let navigate = useNavigate()
 
@@ -46,7 +49,7 @@ function Projects() {
         
           "background": {
             "color": {
-              "value": "rgb(139, 33, 33)"
+              "value": PROJECT_PAGE_COLOR
             },
             "position": "50% 50%",
             "repeat": "no-repeat",
@@ -143,6 +146,8 @@ function Projects() {
         
       }}
     />
+      <div id='time'><Clock /></div>
+      <div id='weather'><Weather /></div>
       <div id='pagenamespan'>Projects</div>
       <div className='top'>Berke Altıparmak</div>
       <div className='projects-middle'>

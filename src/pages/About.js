@@ -4,6 +4,9 @@ import { FaMusic } from 'react-icons/fa'
 import { MdDeveloperMode } from 'react-icons/md'
 import Particles from "react-tsparticles";
 import { useNavigate } from 'react-router-dom'
+import Clock from '../components/Clock'
+import Weather from '../components/Weather';
+
 
 function About() {
 
@@ -96,6 +99,8 @@ function About() {
         detectRetina: true,
       }}
     />
+      <div id='time'><Clock /></div>
+      <div id='weather'><Weather /></div>
       <div id='pagenamespan'>About</div>
       <div className='top'>Berke Altıparmak</div>
       <div className='middle'>
