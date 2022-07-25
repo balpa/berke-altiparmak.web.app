@@ -12,8 +12,8 @@ function Projects() {
 
   let navigate = useNavigate()
 
-  const particlesInit = (main) => {console.log(main)};
-  const particlesLoaded = (container) => {console.log(container)};
+  const particlesInit = (main) => {console.log(main)}
+  const particlesLoaded = (container) => {console.log(container)}
 
   let projects = {
     "berkealtiparmakk": {
@@ -35,7 +35,13 @@ function Projects() {
       title: "Wine Quality Prediction",
       description: "A python application that predicts the quality of a wine. It uses machine learning algorithms to predict the quality of a wine.",
       link: "https://github.com/balpa/wine-quality-prediction-using-machine-learning"
+    },
+    "WhichOne": {
+      title: "WhichOne",
+      description: "Social media application built with React Native and Firebase. It is a simple app which allows users to share pictures and get likes spesific for each photo. The goal is that to understand which photo is the best to choose. Comments, DMs and many more features included.",
+      link: "https://github.com/balpa/WhichOne"
     }
+
 
   } 
 
@@ -146,15 +152,31 @@ function Projects() {
         
       }}
     />
-      <div id='time'><Clock /></div>
-      <div id='weather'><Weather /></div>
+      <div id='time'>
+        <Clock />
+      </div>
+      <div id='weather'>
+        <Weather />
+      </div>
       <div id='pagenamespan'>Projects</div>
       <div className='top'>Berke Altıparmak</div>
       <div className='projects-middle'>
-          <ProjectCard title={projects.berkealtiparmakk.title} description={projects.berkealtiparmakk.description} link={projects.berkealtiparmakk.link}/>
-          <ProjectCard title={projects.yalcinaltiparmak.title} description={projects.yalcinaltiparmak.description} link={projects.yalcinaltiparmak.link}/>
-          <ProjectCard title={projects.CSGORoundWinner.title} description={projects.CSGORoundWinner.description} link={projects.CSGORoundWinner.link}/>
-          <ProjectCard title={projects.WineQuality.title} description={projects.WineQuality.description} link={projects.WineQuality.link}/>
+          <ProjectCard 
+            title={projects.WhichOne.title} 
+            description={projects.WhichOne.description} 
+            link={projects.WhichOne.link}/>
+          <ProjectCard 
+            title={projects.berkealtiparmakk.title} 
+            description={projects.berkealtiparmakk.description} 
+            link={projects.berkealtiparmakk.link}/>
+          <ProjectCard 
+            title={projects.CSGORoundWinner.title} 
+            description={projects.CSGORoundWinner.description} 
+            link={projects.CSGORoundWinner.link}/>
+          <ProjectCard 
+            title={projects.WineQuality.title} 
+            description={projects.WineQuality.description} 
+            link={projects.WineQuality.link}/>
       </div>
       <div className='bottom'></div>
       <button id='home-button' onClick={()=> {navigate('/home')}}>Home</button>

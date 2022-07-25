@@ -37,9 +37,7 @@ function Home() {
       loaded={particlesLoaded}
       options={{
         background: {
-          color: {
-            value: "#f9dc0b",
-          },
+          color: { value: "#f9dc0b" },
         },
         fpsLimit: 120,
         interactivity: {
@@ -61,9 +59,7 @@ function Home() {
               opacity: 0.8,
               size: 40,
             },
-            push: {
-              quantity: 4,
-            },
+            push: { quantity: 4 },
             repulse: {
               distance: 200,
               duration: 1,
@@ -113,11 +109,20 @@ function Home() {
         detectRetina: true,
       }}
     />
-    <div id='time'><Clock /></div>
-    <div id='weather'><Weather /></div>
+    <div id='time'>
+      <Clock />
+    </div>
+    <div id='weather'>
+      <Weather />
+    </div>
     <div id='pagenamespan'>Home</div>
     <div className='top'>Berke Altıparmak</div>
-    <div style={{top:'50%',left:'50%',transform:'translate(-50%,-50%)',position:'absolute'}}>
+    <div 
+      style={{
+        top:'50%',
+        left:'50%',
+        transform:'translate(-50%,-50%)',
+        position:'absolute'}}>
       <motion.div id='motion-home-div' animate={animation} transition={{duration: 0.5}}>
         <motion.div animate={{opacity:[0,0,0,1]}} transition={{duration: 3}}>
           <TypeName />
@@ -130,7 +135,6 @@ function Home() {
     </div>
     <div className='socialmedia-container'>
       <div id='icons-container'>
-        
         <a href='https://www.github.com/balpa' target='_blank' rel='noreferrer'><AiFillGithub /></a>
         <a href='https://www.instagram.com/berkealtiparmakk' target='_blank' rel='noreferrer'><AiOutlineInstagram /></a>
         <a href='https://www.linkedin.com/in/berkealtiparmak/' target='_blank' rel='noreferrer'><AiOutlineLinkedin /></a>
@@ -140,7 +144,7 @@ function Home() {
     </div>
     <button id='about-button' onClick={()=> {navigate('/about')}}>About</button>
     <button id='projects-button' onClick={()=> {navigate('/projects')}}>Projects</button>
-    <button id='more-button' onClick={()=> {navigate('/more')}}>More</button>
+    {/* <button id='more-button' onClick={()=> {navigate('/more')}}>More</button> */}
     </>
   )
 }
