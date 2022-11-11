@@ -1,36 +1,39 @@
-:root{
+:root {
     --mainyellow: #f9dc0b;
 }
+
 ::-webkit-scrollbar {
     display: none;
 }
-button{
+
+button {
     font-family: 'Righteous', cursive;
 }
+
 a:link {
     color: black;
     background-color: transparent;
     text-decoration: none;
-  }
-  
-  a:visited {
+}
+
+a:visited {
     color: black;
     background-color: transparent;
     text-decoration: none;
-  }
-  
-  a:hover {
+}
+
+a:hover {
     color: black;
     background-color: transparent;
-  }
-  
-  a:active {
+}
+
+a:active {
     color: black;
     background-color: transparent;
-  }
+}
 
 
-.top{
+.top {
     width: 100vw;
     height: 10vh;
     font-size: 70px;
@@ -44,13 +47,13 @@ a:link {
 }
 
 @media screen and (max-width: 600px) {
-    .top{
+    .top {
         font-size: 40px;
     }
 }
-    
 
-.middle{
+
+.middle {
     width: 100vw;
     height: 80vh;
     display: flex;
@@ -63,7 +66,8 @@ a:link {
     transform: translate(-50%, -50%);
     position: absolute;
 }
-.projects-middle{
+
+.projects-middle {
     width: 85vw;
     height: 80vh;
     display: flex;
@@ -76,13 +80,14 @@ a:link {
     transform: translate(-50%, -50%);
     position: absolute;
 }
-.bottom{
+
+.bottom {
     width: 100vw;
     height: 5vh;
 
 }
 
-.about-middle-left{
+.about-middle-left {
     width: 500px;
     min-height: 85%;
     height: auto;
@@ -96,11 +101,13 @@ a:link {
 
 
 }
-.about-middle-left:hover{
+
+.about-middle-left:hover {
     background-color: black;
-    color:  var(--mainyellow);
+    color: var(--mainyellow);
 }
-.about-middle-right{
+
+.about-middle-right {
     width: 500px;
     min-height: 85%;
     height: auto;
@@ -112,13 +119,14 @@ a:link {
     letter-spacing: 1px;
     z-index: 10;
 }
-.about-middle-right:hover{
+
+.about-middle-right:hover {
     background-color: black;
-    color:  var(--mainyellow);
+    color: var(--mainyellow);
 }
 
-#pagenamespan{
-    z-index: 10;
+#pagenamespan {
+    z-index: 0;
     color: rgba(0, 0, 0, 0.20);
     width: 200px;
     height: auto;
@@ -128,11 +136,11 @@ a:link {
     font-size: 7vw;
     font-weight: 900;
     letter-spacing: 10px;
-    
+
 }
 
-.socialmedia-container{
-    position:absolute;
+.socialmedia-container {
+    position: absolute;
     width: 100px;
     height: 250px;
     z-index: 10;
@@ -144,7 +152,8 @@ a:link {
     align-items: center;
 
 }
-#icons-container{
+
+#icons-container {
     width: 100%;
     height: 200px;
     display: flex;
@@ -154,13 +163,14 @@ a:link {
     font-size: 40px;
 
 }
-#empty-line{
+
+#empty-line {
     width: 5px;
     height: 100%;
     background-color: black;
 }
 
-#about-button{
+#about-button {
     z-index: 10;
     width: 125px;
     background-color: rgba(0, 0, 0, 0);
@@ -172,11 +182,13 @@ a:link {
     border: none;
     transition: 0.3s;
 }
-#about-button:hover{
+
+#about-button:hover {
     transform: rotate(90deg) scale(1.1) translate(0, -65%);
     cursor: pointer;
-} 
-#projects-button{
+}
+
+#projects-button {
     z-index: 10;
     width: 125px;
     background-color: rgba(0, 0, 0, 0);
@@ -188,11 +200,13 @@ a:link {
     border: none;
     transition: 0.3s;
 }
-#projects-button:hover{
+
+#projects-button:hover {
     transform: rotate(-90deg) scale(1.1) translate(0, -65%);
     cursor: pointer;
-} 
-#home-button{
+}
+
+#home-button {
     z-index: 10;
     width: 125px;
     background-color: rgba(0, 0, 0, 0);
@@ -203,10 +217,13 @@ a:link {
     border: none;
     transition: 0.3s;
 }
-#home-button:hover{
+
+#home-button:hover {
     transform: rotate(-90deg) scale(1.1) translate(0, -70%);
     cursor: pointer;
-}#more-button{
+}
+
+#more-button {
     z-index: 10;
     width: 125px;
     background-color: rgba(0, 0, 0, 0);
@@ -217,12 +234,13 @@ a:link {
     border: none;
     transition: 0.3s;
 }
-#more-button:hover{
+
+#more-button:hover {
     transform: scale(1.1);
     cursor: pointer;
-}  
+}
 
-#motion-home-div{
+#motion-home-div {
     width: 100px;
     height: auto;
     background-color: rgba(0, 0, 0, 0.188);
@@ -233,18 +251,19 @@ a:link {
     border: 2px solid black;
 
 }
+
 @media screen and (max-width: 600px) {
-    #motion-home-div{
+    #motion-home-div {
         font-size: 30px;
     }
 }
 
 
-#project-card-main-container{
+#project-card-main-container {
     width: 250px;
     height: 350px;
     margin: 25px;
-    background-color: white;
+    background-color: rgba(230, 230, 230, 0.8);
     z-index: 10;
     display: flex;
     flex-direction: column;
@@ -255,53 +274,56 @@ a:link {
 }
 
 
-#visit-div{
+#visit-div {
     width: 50%;
     height: 10%;
     background-color: black;
     text-align: center;
     color: white;
     transition: 0.2s;
-    border-radius: 0px 0px 0px 60px;
+    border-radius: 0px 60px 0px 60px;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 10;
 }
-#visit-div:hover{
+
+#visit-div:hover {
     color: red;
     cursor: pointer;
 
 }
 
-#project-card-link{
+#project-card-link {
     color: white;
     transition: 0.3s;
 }
 
-#project-card-link:hover{
-    color: red
+#project-card-link:hover {
+    color: rgb(139, 33, 33)
 }
 
-#more-div{
+#more-div {
     width: 10px;
     height: 0px;
     background-color: rgba(0, 0, 0, 0.188);
 }
 
-#time{
+#time {
     position: absolute;
     top: 0;
     left: 0;
     font-size: clamp(8px, 2vw, 14px);
 
 }
-#weather{
+
+#weather {
     position: absolute;
     top: 0;
     right: 0;
     font-size: clamp(10px, 2vw, 15px);
 
 }
+
 /* KUBİLAY RENK
 "rgb(139, 33, 33)" */
