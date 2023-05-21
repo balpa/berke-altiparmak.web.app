@@ -157,12 +157,8 @@ function Projects() {
 
         }}
       />
-      <div id='time'>
-        <Clock />
-      </div>
-      <div id='weather'>
-        <Weather />
-      </div>
+      {/* <div id='time'><Clock /></div>
+      <div id='weather'><Weather /></div> */}
       <div id='pagenamespan'>Projects</div>
       <div className='top'>Berke Altıparmak</div>
       <div className='projects-middle'>

@@ -104,8 +104,8 @@ function More() {
           detectRetina: true,
         }}
       />
-      <div id='time'><Clock /></div>
-      <div id='weather'><Weather /></div>
+      {/* <div id='time'><Clock /></div>
+      <div id='weather'><Weather /></div> */}
       <div id='pagenamespan'>More</div>
       <div className='top'>Berke Altıparmak</div>
       <div className='middle'>

@@ -9,7 +9,6 @@
 //  this stuff is worth it, you can buy me a beer in return.   Berke Altıparmak
 //  ----------------------------------------------------------------------------
 
-
 import './App.css';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom'
@@ -19,7 +18,6 @@ import Projects from './pages/Projects';
 import More from './pages/More'
 
 function App() {
-
   return (
     <Routes>
       <Route path="/" element={<Home />} />

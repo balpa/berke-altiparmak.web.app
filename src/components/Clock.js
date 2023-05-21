@@ -5,8 +5,8 @@ function Clock(){
     function refreshClock() {
       setDate(new Date());
     }
+
     React.useEffect(() => {
-  
       const timerId = setInterval(refreshClock, 1000);
       return function cleanup() {
         clearInterval(timerId);

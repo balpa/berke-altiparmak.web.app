@@ -49,6 +49,17 @@ a:active {
 @media screen and (max-width: 600px) {
     .top {
         font-size: 40px;
+        margin-top: 10px;
+    }
+
+    .about-middle-left, .about-middle-right { 
+        min-height: unset !important;
+        padding-bottom: 15px !important;
+        font-size: 15px !important;
+    }
+
+    .about-middle-right {
+        margin-bottom: 20px;
     }
 }
 
@@ -140,7 +151,7 @@ a:active {
 }
 
 .socialmedia-container {
-    position: absolute;
+    position: fixed;
     width: 100px;
     height: 250px;
     z-index: 10;
@@ -176,9 +187,9 @@ a:active {
     background-color: rgba(0, 0, 0, 0);
     font-size: 40px;
     position: absolute;
-    top: 45vh;
+    top: 50%;
     right: 0;
-    transform: rotate(90deg) translate(0, -75%);
+    transform: rotate(90deg) translate(0, -75%) translateX(-50%);
     border: none;
     transition: 0.3s;
 }
@@ -194,9 +205,9 @@ a:active {
     background-color: rgba(0, 0, 0, 0);
     font-size: 40px;
     position: absolute;
-    top: 45vh;
+    top: 50%;
     left: 0;
-    transform: rotate(-90deg) translate(0, -75%);
+    transform: rotate(-90deg) translate(0, -75%) translateX(50%);
     border: none;
     transition: 0.3s;
 }
@@ -211,9 +222,9 @@ a:active {
     width: 125px;
     background-color: rgba(0, 0, 0, 0);
     font-size: 40px;
-    position: absolute;
-    top: 45vh;
-    transform: rotate(-90deg) translate(0, -75%);
+    position: fixed;
+    top: 50%;
+    transform: rotate(-90deg) translate(0, -75%) translateX(50%);
     border: none;
     transition: 0.3s;
 }

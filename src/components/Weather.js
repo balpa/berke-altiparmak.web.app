@@ -10,7 +10,7 @@ function Weather() {
 
   const weatherSpan = React.useRef()
 
-  React.useEffect(() => {                         // GET GEOLOCATION && set istanbul for not getting location 
+  React.useEffect(() => { // GET GEOLOCATION && set istanbul if cant get location 
     if (!navigator.geolocation) { setStatus(false) }
     else {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -24,7 +24,7 @@ function Weather() {
   let URL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_WEATHER_API}&units=metric`
 
   React.useEffect(() => {
-    async function fetchData() {          // GET WEATHER ASYNC
+    async function fetchData() {
       if (status === true) {
         const response = await fetch(URL)
         const data = await response.json()

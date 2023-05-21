@@ -9,8 +9,6 @@ import TypeName from '../components/TypeName'
 import Clock from '../components/Clock'
 import Weather from '../components/Weather'
 
-
-
 function Home() {
 
   let navigate = useNavigate()
@@ -109,12 +107,12 @@ function Home() {
           detectRetina: true,
         }}
       />
-      <div id='time'>
+      {/* <div id='time'>
         <Clock />
       </div>
       <div id='weather'>
         <Weather />
-      </div>
+      </div> */}
       <div id='pagenamespan'>Home</div>
       <div className='top'>Berke Altıparmak</div>
       <div
