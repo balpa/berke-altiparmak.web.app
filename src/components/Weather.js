@@ -1,7 +1,6 @@
 import React from 'react'
 
 function Weather() {
-
   const [weatherData, setWeatherData] = React.useState(null)
 
   const [lat, setLat] = React.useState(null)

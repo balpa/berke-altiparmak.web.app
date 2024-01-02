@@ -181,7 +181,7 @@ a:active {
     background-color: black;
 }
 
-#about-button {
+#about-button, #projects-button, #hone-button {
     z-index: 10;
     width: 125px;
     background-color: rgba(0, 0, 0, 0);
@@ -192,29 +192,12 @@ a:active {
     transform: rotate(90deg) translate(0, -75%) translateX(-50%);
     border: none;
     transition: 0.3s;
-}
-
-#about-button:hover {
-    transform: rotate(90deg) scale(1.1) translate(0, -65%);
     cursor: pointer;
 }
 
 #projects-button {
-    z-index: 10;
-    width: 125px;
-    background-color: rgba(0, 0, 0, 0);
-    font-size: 40px;
-    position: absolute;
-    top: 50%;
     left: 0;
     transform: rotate(-90deg) translate(0, -75%) translateX(50%);
-    border: none;
-    transition: 0.3s;
-}
-
-#projects-button:hover {
-    transform: rotate(-90deg) scale(1.1) translate(0, -65%);
-    cursor: pointer;
 }
 
 #home-button {
@@ -227,10 +210,6 @@ a:active {
     transform: rotate(-90deg) translate(0, -75%) translateX(50%);
     border: none;
     transition: 0.3s;
-}
-
-#home-button:hover {
-    transform: rotate(-90deg) scale(1.1) translate(0, -70%);
     cursor: pointer;
 }
 

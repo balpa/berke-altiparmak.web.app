@@ -10,7 +10,6 @@ import Clock from '../components/Clock'
 import Weather from '../components/Weather'
 
 function Home() {
-
   let navigate = useNavigate()
 
   const particlesInit = (main) => { console.log(main) }
@@ -18,14 +17,14 @@ function Home() {
 
   const animation = useAnimation()
 
-  async function sequence() {
+  async function animationSequence() {
     await animation.start({ width: '50vw' })
     await animation.start({ minHeight: '50vh' })
     await animation.start({ borderRadius: '35px' })
     await animation.start({ backgroundColor: '#f9dc0b' })
   }
 
-  useEffect(() => { sequence() }, [])
+  useEffect(() => { animationSequence() }, [])
 
   return (
     <>
@@ -83,7 +82,7 @@ function Home() {
               enable: true,
               outMode: "bounce",
               random: false,
-              speed: 6,
+              speed: 0.3,
               straight: false,
             },
             number: {
@@ -128,7 +127,6 @@ function Home() {
             <br />
             <br />
             <TypeInfo />
-
           </motion.div>
         </motion.div>
       </div>

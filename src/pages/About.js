@@ -9,6 +9,8 @@ import Weather from '../components/Weather';
 
 
 function About() {
+  const developerText = "I am working in Insider as a full-stack developer at this stage of my life. Besides, developing a Turkish music literature and mobile social media applications using Expo & React Native, and web applications via React alongside with Firebase and more. As non-commercial, I've done machine learning, NLP, WebGL-OpenGL, embedded systems (Arduino), software engineering, assembly programming and many more side-projects."
+  const musicianTest = "I am a professional clarinetist and oud player. I've grown up among the best musicians in Turkey and learnt the intricacies of turkish music directly from them. I have couple of songs composed by me and many years of experience teaching how to become a good singer or an instrumentalist."
 
   let navigate = useNavigate()
 
@@ -75,7 +77,7 @@ function About() {
               enable: true,
               outMode: "bounce",
               random: false,
-              speed: 6,
+              speed: 0.3,
               straight: false,
             },
             number: {
@@ -109,14 +111,14 @@ function About() {
             <MdDeveloperMode style={{ margin: '0px 5px -5px 0px' }} />Developer
           </h1>
           <br />
-          I am concentrating my work mainly on frontend development at this stage of my life. Currently developing Turkish music literature and mobile social media applications using Expo & React Native, and web applications via React alongside with Firebase and more. As non-commercial, I've done machine learning, NLP, WebGL-OpenGL, embedded systems (Arduino), software engineering, assembly programming and many more side-projects.
+          { developerText }
         </div>
         <div className='about-middle-right'>
           <h1>
             <FaMusic style={{ margin: '0px 12px -10px 0px' }} />Musician
           </h1>
           <br />
-          I am a professional clarinetist and oud player. I've grown up among the best musicians in Turkey and learnt the intricacies of turkish music directly from them. I have couple of songs composed by me and many years of experience teaching how to become a good singer or an instrumentalist.
+          { musicianTest }
         </div>
       </div>
       <div className='bottom'></div>

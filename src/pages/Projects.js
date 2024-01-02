@@ -7,9 +7,6 @@ import Clock from '../components/Clock'
 import Weather from '../components/Weather';
 
 function Projects() {
-
-  let PROJECT_PAGE_COLOR = "rgb(139, 33, 33)"
-
   let navigate = useNavigate()
 
   const particlesInit = (main) => { console.log(main) }
@@ -60,7 +57,7 @@ function Projects() {
 
           "background": {
             "color": {
-              "value": PROJECT_PAGE_COLOR
+              "value": "rgb(139, 33, 33)"
             },
             "position": "50% 50%",
             "repeat": "no-repeat",
@@ -118,7 +115,7 @@ function Projects() {
                 "top": "out"
               },
               "random": true,
-              "speed": 2
+              "speed": 0.3
             },
             "number": {
               "density": {

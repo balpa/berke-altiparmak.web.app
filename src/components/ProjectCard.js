@@ -1,9 +1,8 @@
 import { React, useEffect } from 'react'
-import '../App.css'
 import { motion, useAnimation } from 'framer-motion'
+import '../App.css'
 
-function ProjectCard(props) {
-
+function ProjectCard({ title, description, link }) {
   const animation = useAnimation()
 
   async function sequence() {
@@ -21,15 +20,15 @@ function ProjectCard(props) {
           scale: 1.05,
           backgroundColor: 'rgba(255,255,255,1)'
         }}
-        animate={animation}
+        animate={ animation }
         transition={{ duration: 0.7 }}
         whileTap={{ scale: 0.95 }}
       >
-        <h3>{props.title}</h3>
-        <p>{props.description}</p>
+        <h3>{ title }</h3>
+        <p>{ description }</p>
         <div id="project-card-line" style={{ width: "80%", height: "3px", backgroundColor: 'black' }}></div>
         <div id="visit-div">
-          <a id='project-card-link' href={`${props.link}`} target='_blank' rel='noreferrer'>Visit</a>
+          <a id='project-card-link' href={`${ link }`} target='_blank' rel='noreferrer'>Visit</a>
         </div>
 
       </motion.div>
