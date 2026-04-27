@@ -138,7 +138,7 @@ a:active {
 
 #pagenamespan {
     z-index: 0;
-    color: rgba(0, 0, 0, 0.20);
+    color: rgba(0, 0, 0, 0.3);
     width: 200px;
     height: auto;
     position: absolute;
@@ -147,7 +147,8 @@ a:active {
     font-size: 7vw;
     font-weight: 900;
     letter-spacing: 10px;
-
+    pointer-events: none;
+    user-select: none;
 }
 
 .socialmedia-container {
@@ -299,21 +300,3 @@ a:active {
     background-color: rgba(0, 0, 0, 0.188);
 }
 
-#time {
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-size: clamp(8px, 2vw, 14px);
-
-}
-
-#weather {
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: clamp(10px, 2vw, 15px);
-
-}
-
-/* KUBİLAY RENK
-"rgb(139, 33, 33)" */

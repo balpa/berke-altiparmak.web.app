@@ -2,11 +2,24 @@
   "name": "berke-altiparmak",
   "version": "0.1.0",
   "private": true,
+  "description": "Personal portfolio of Berke Altıparmak — developer & musician.",
+  "homepage": "https://berke-altiparmak.web.app",
+  "author": {
+    "name": "Berke Altıparmak",
+    "email": "berkealtiparmak@outlook.com",
+    "url": "https://berke-altiparmak.web.app"
+  },
+  "license": "Beerware",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/balpa/berke-altiparmak.web.app"
+  },
   "dependencies": {
     "@mui/icons-material": "^5.5.1",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
+    "caniuse-lite": "^1.0.30001791",
     "dotenv": "^16.0.3",
     "framer-motion": "^6.2.8",
     "react": "^18.0.0",

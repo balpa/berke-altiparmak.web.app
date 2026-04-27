@@ -1,26 +1,15 @@
-import React from 'react';
-import {createRoot} from 'react-dom/client'
-import './index.css';
-import App from './App';
+import React from 'react'
+import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
+import './index.css'
+import App from './App'
+import ErrorBoundary from './components/ErrorBoundary'
 
-// REACT v18 - createRoot()
-
-const root = createRoot(document.getElementById('root'));
+const root = createRoot(document.getElementById('root'))
 root.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <ErrorBoundary>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </ErrorBoundary>
 )
-
-// REACT versions below v18 - render()
-
-// ReactDOM.render(
-//   <BrowserRouter>
-//     <App />
-//   </BrowserRouter>,
-
-//   document.getElementById('root')
-// );
-
-

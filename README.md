@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+# berke-altiparmak.web.app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Personal portfolio site for **Berke Altıparmak** — developer and musician.
 
-## Available Scripts
+🌐 **Live:** https://berke-altiparmak.web.app
 
-In the project directory, you can run:
+## Tech stack
 
-### `npm start`
+- React 18 (Create React App)
+- React Router v6
+- Framer Motion (animations)
+- react-tsparticles (animated backgrounds)
+- typewriter-effect
+- Firebase Hosting (deploy target only — no Firebase SDK in the app)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Getting started
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+git clone https://github.com/balpa/berke-altiparmak.web.app
+cd berke-altiparmak.web.app
+npm install
+npm start
+```
 
-### `npm test`
+Dev server runs at http://localhost:3000 with hot module reloading.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Scripts
 
-### `npm run build`
+| Command | What it does |
+|---|---|
+| `npm start` | Dev server with HMR on port 3000 |
+| `npm run build` | Production build to `./build` (sourcemaps disabled) |
+| `npm test` | Test runner (no tests yet) |
+| `npx serve -s build -l 5000` | Serve the production build locally on port 5000 |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Project structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+src/
+├── components/
+│   ├── ErrorBoundary.js
+│   ├── ParticlesBackground.js
+│   ├── ProjectCard.js
+│   ├── TypeInfo.js / TypeName.js
+│   └── layout/
+│       ├── PageLayout.js
+│       └── SocialLinks.js
+├── config/particles.js          # particle option factories
+├── data/projects.js             # portfolio project list
+└── pages/
+    ├── Home.js
+    ├── About.js
+    ├── Projects.js
+    ├── More.js
+    └── NotFound.js
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Routes
 
-### `npm run eject`
+- `/` and `/home` → Home
+- `/about` → About
+- `/projects` → Projects
+- `/more` → More
+- `*` → 404
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Firebase Hosting rewrites are configured for SPA routing (`firebase.json`), so deep links work on hard refresh.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Environment
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Optional variables (see `.env.example`):
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+| Var | Purpose |
+|---|---|
+| `REACT_APP_WEATHER_API` | OpenWeatherMap key (currently unused — Weather component removed) |
 
-## Learn More
+`GENERATE_SOURCEMAP=false` is set in `.env.production` to keep production sourcemaps out of the bundle.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Deploy
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The site is deployed to Firebase Hosting. Configuration lives in `firebase.json` and `.firebaserc` (project ID: `berke-altiparmak`).
 
-### Code Splitting
+```bash
+firebase login                     # one-time
+npm run build
+firebase deploy --only hosting
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+After deploy, verify a deep route (e.g. `/projects`) on hard refresh to confirm SPA rewrites are working.
 
-### Analyzing the Bundle Size
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Conventions and architectural notes for contributors (and AI assistants) live in [`CLAUDE.md`](./CLAUDE.md).
 
-### Making a Progressive Web App
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Beerware — see header in `src/App.js`. If you find this stuff worth it, you can buy Berke a beer.
