@@ -4,3 +4,6 @@ build
 *.log
 .env
 .env.local
+design_handoff_altiparmak_times/
+screenshots/
+cv.pdf

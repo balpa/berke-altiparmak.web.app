@@ -8,19 +8,16 @@ Guidance for Claude Code working in this repository.
 
 ## Project
 
-Personal portfolio site for Berke Altıparmak — single-page React app deployed to Firebase Hosting at https://berke-altiparmak.web.app.
+Personal portfolio for Berke Altıparmak, redesigned as **The Balpa Times** — a vintage broadsheet newspaper with a 4-page page-flip metaphor (Front, Tech, Arts, Academia) on desktop and a single-column NYT-mobile-style feed on mobile. Deployed to Firebase Hosting at https://berke-altiparmak.web.app.
 
-**Note:** Firebase is used **only for hosting**. There is no Firebase SDK in the code (no auth, Firestore, storage). The `.web.app` domain is just a Firebase Hosting subdomain.
+**Note:** Firebase is used **only for hosting**. There is no Firebase SDK in the code. The `.web.app` domain is just a Firebase Hosting subdomain.
 
 ## Tech stack
 
 - **React 18** (Create React App, `react-scripts@5.0.0`)
-- **react-router-dom v6** for client-side routing
-- **framer-motion** for animations
-- **react-tsparticles** for animated backgrounds (yellow on Home/About/More, red on Projects)
-- **typewriter-effect** for the typing intro on Home
-- **react-icons** for social/UI icons
-- **@mui/icons-material** (used sparingly — `MdDeveloperMode`, `FaMusic`)
+- **react-router-dom v6** — single `/` route + legacy redirects + 404
+- No animation libraries, no icon libraries, no particle libraries (all removed in the newspaper redesign — bundle dropped from ~156 kB to ~64 kB gzipped JS).
+- **Playwright** (devDep) for visual-regression screenshots against the design reference.
 
 ## Commands
 
@@ -31,7 +28,7 @@ npx serve -s build -l 5000         # smoke-test prod build locally
 firebase deploy --only hosting     # publish to https://berke-altiparmak.web.app
 ```
 
-Logged-in Firebase account: `balpatv@gmail.com`. Project ID: `berke-altiparmak`.
+Firebase account: `balpatv@gmail.com`. Project ID: `berke-altiparmak`.
 
 ## Folder structure
 
@@ -39,75 +36,87 @@ Logged-in Firebase account: `balpatv@gmail.com`. Project ID: `berke-altiparmak`.
 src/
 ├── App.css / App.js / index.js / index.css
 ├── components/
-│   ├── ErrorBoundary.js          # class boundary, wraps <App/>
-│   ├── ParticlesBackground.js    # memoized wrapper around <Particles>
-│   ├── ProjectCard.js            # animated card for /projects
-│   ├── TypeInfo.js / TypeName.js # typewriter effects on Home
-│   └── layout/
-│       ├── PageLayout.js         # common shell: particles + top header + pagename
-│       └── SocialLinks.js        # GitHub/IG/LinkedIn/YouTube
-├── config/
-│   └── particles.js              # yellow + red particle option factories
+│   ├── ErrorBoundary.js              # class boundary, wraps <App/>
+│   └── newspaper/
+│       ├── Newspaper.js              # desktop shell — masthead, INSIDE nav, prev/next, footer
+│       ├── MobileNewspaper.js        # mobile feed (single column, sticky top bar)
+│       ├── SectionLabel.js           # shared label rule (typewriter caps, double border)
+│       └── pages/
+│           ├── FrontPage.js          # 2-col lead with drop cap + portrait sidebar
+│           ├── TechPage.js           # project dossier + model bar chart + ads sidebar
+│           ├── ArtsPage.js           # music/repertoire + classifieds sidebar
+│           └── AcademiaPage.js       # education timeline + coursework + classifieds
 ├── data/
-│   └── projects.js               # static array of portfolio projects
+│   ├── content.js                    # BERKE_CONTENT (TR + EN — name, experience, projects, skills, education, music, certs)
+│   └── news.js                       # NEWS_CONTENT (TR + EN — masthead, motto, vol, pages array with kicker/headline/subhead/lead/pullquote/sidebar)
+├── hooks/
+│   └── useMediaQuery.js              # matchMedia subscription with SSR-safe init
 └── pages/
-    ├── Home.js / About.js / Projects.js / More.js
-    └── NotFound.js               # catch-all `*` route
+    ├── Home.js                       # picks Newspaper (≥1024px) or MobileNewspaper
+    └── NotFound.js                   # newspaper-styled 404 ("PAGE NOT FOUND" classified)
 ```
+
+Other top-level files of note:
+- `scripts/screenshot.js` — Playwright visual-check script (`--ref` for reference, no flag for implementation).
+- `scripts/debug-clicks.js`, `scripts/debug-state.js` — diagnostic helpers, kept around for future debugging.
+- `design_handoff_altiparmak_times/` — gitignored design source (preview.html + jsx prototypes). Treat as read-only reference; never copy code from it directly without porting (no `window.*` globals, ESM only).
 
 ## Conventions
 
-- **All pages render through `PageLayout`** — never embed `<Particles>` or the page-name span directly in a page. Pass `particlesVariant` (`'yellow'` | `'red'`) and optional `particlesSpeed` for variations.
-- **Particle options must be memoized** — `ParticlesBackground` already does this with `useMemo` keyed on variant/speed. If adding a new particle config, add it as a factory in `src/config/particles.js`.
-- **Animation sequences with framer-motion** wrap the async function in `useCallback` and list it in the `useEffect` dep array. See `Home.js` and `ProjectCard.js`.
-- **Static data** (project list, page text) lives in `src/data/` or as module-level `const` above the component — never inline inside the component body (avoids re-creation on every render).
-- **No Clock/Weather components.** They were removed in the cleanup; `REACT_APP_WEATHER_API` in `.env.example` is leftover documentation if weather is reintroduced.
-- **Accessibility:** every icon-only link/button needs an `aria-label`. Decorative elements (`#pagenamespan`, `#empty-line`, the project card divider) use `aria-hidden="true"`. Buttons have `type="button"`.
+- **All page-level chrome goes through `Newspaper.js` / `MobileNewspaper.js`.** Don't add layout chrome to individual page renderers — they should only render the section content (kicker / h1 / subhead / body grid). The shell handles masthead, INSIDE nav, footer.
+- **Tokens are hard-coded constants** at the top of `Newspaper.js` / `MobileNewspaper.js`: `PAPER = '#f4ead2'`, `INK = '#1a1a1a'`, `ACCENT = '#a31621'`, font families. The design handoff has a tweaks panel — we don't ship it. If you need to tweak, change the constants.
+- **Page changes are instant** — no animation. Earlier versions had a 3D page-flip overlay; it was removed because it felt janky. Don't reintroduce without explicit ask.
+- **Drop cap** uses CSS `::first-letter` via the `.drop-cap` class in `App.css` — accessible (screen reader reads the full word), no DOM slicing.
+- **Static data** lives in `src/data/`. `content.js` and `news.js` are bilingual dictionaries keyed by `'en'` / `'tr'` — keep both in sync when adding fields.
+- **Routing:** `/` is the only real route (renders Home, which switches between desktop and mobile). `/home`, `/about`, `/projects`, `/more` are 301 (`<Navigate replace>`) redirects to `/` for backwards compatibility with the previous portfolio's URLs. `*` → `NotFound`.
+- **Accessibility:** all icon-only buttons need `aria-label`; decorative elements use `aria-hidden="true"`; nav containers carry `aria-label="Inside" / "İçindekiler"`; current page button gets `aria-current="page"`; kbd shortcuts (← / →) for page-flip.
 
-## Styling
+## Visual regression workflow
 
-- Single global `App.css` (~310 lines) — most layout lives here keyed by id (`#about-button`, `#motion-home-div`, `#project-card-main-container`, etc.) rather than CSS modules.
-- Brand color: `--mainyellow: #f9dc0b` (defined at `:root` in `App.css`).
-- Font: `Righteous` from Google Fonts (preconnected in `index.html`).
-- Mobile breakpoint: `@media screen and (max-width: 600px)`.
+The design source lives in `design_handoff_altiparmak_times/preview.html`. Run `/visual-check` to:
+1. Serve the reference (port 5001) and the implementation (port 5000).
+2. Take Playwright screenshots into `screenshots/`.
+3. Read pairs (`ref-*.png` vs `impl-*.png`) side-by-side.
+
+The Playwright context uses `waitForFunction` on the headline text after each navigation — without it, screenshots race against the React commit and capture the previous page's content.
 
 ## Routes
 
 | Path | Component | Notes |
 |---|---|---|
-| `/` and `/home` | `Home` | Both serve Home (legacy compatibility) |
-| `/about` | `About` | |
-| `/projects` | `Projects` | Renders first 4 entries from `data/projects.js` |
-| `/more` | `More` | No nav link to it from UI; reachable only by URL |
-| `*` | `NotFound` | 404 fallback inside React Router |
+| `/` | `Home` → `Newspaper` (desktop) / `MobileNewspaper` (mobile) | The whole site |
+| `/home`, `/about`, `/projects`, `/more` | `<Navigate to="/" replace />` | Legacy redirects from the previous portfolio |
+| `*` | `NotFound` | Newspaper-styled 404 |
 
-Firebase Hosting rewrites all unknown paths to `/index.html` (see `firebase.json`), so client-side routing works on hard refresh.
+Firebase Hosting rewrites all unknown paths to `/index.html`, so client-side routing works on hard refresh.
 
 ## SEO / metadata
 
-- Title and description live in `public/index.html` (Open Graph + Twitter Card included).
-- `public/manifest.json` has `short_name`/`name`/`theme_color`. **Icons array is empty** — there are no `favicon.ico` or `logo*.png` files yet. Add them to `public/` and populate `manifest.json` `icons` when available.
+- Title and description in `public/index.html` (Open Graph + Twitter Card).
+- `public/manifest.json` — short_name "Balpa Times", theme_color paper, background_color dark.
+- `public/berke-portrait.png` — used by the FrontPage portrait + Mobile lead. To swap the photo, replace this file (no code change needed).
+- **Icons array in manifest is empty** — `favicon.ico` and `logo*.png` files don't exist. Add to `public/` and populate when ready.
 - No `og:image` yet (no graphic available); add a 1200×630 PNG to `public/` and reference from `index.html` when ready.
 
 ## Known issues / tech debt
 
-- **`react-scripts@5.0.0` is unmaintained.** `npm audit` reports ~76 vulnerabilities (5 critical, 37 high) — mostly transitive in build tooling. A future migration to **Vite** is recommended; until then, audit fixes are limited.
-- **`react-tsparticles` is deprecated** in favor of `@tsparticles/react`. Migration not done yet — would change imports and possibly some option keys.
-- Bundle is not code-split (all pages in one chunk). For now bundle is small (~156 kB gzip JS) so this is fine; revisit if it grows.
+- **`react-scripts@5.0.0` is unmaintained.** `npm audit` reports vulnerabilities (mostly transitive in build tooling). Future migration to **Vite** is recommended; until then, audit fixes are limited.
 - No tests — `@testing-library/*` is installed but unused.
+- Bundle is not code-split. Currently small (~64 kB gzip JS) so this is fine; revisit if it grows.
+- Newspaper component carries a lot of inline styles. If style maintenance becomes painful, extract into CSS modules per component — but the inline approach matches the design handoff one-to-one and was deliberately preserved during the port.
 
 ## Environment variables
 
-| Var | Used? | Purpose |
-|---|---|---|
-| `REACT_APP_WEATHER_API` | No (component removed) | OpenWeatherMap key — kept in `.env.example` for future re-introduction |
-| `GENERATE_SOURCEMAP` | Build-time | Set to `false` in `.env.production` to disable sourcemaps in prod |
+| Var | Purpose |
+|---|---|
+| `GENERATE_SOURCEMAP=false` | Set in `.env.production`, disables prod sourcemaps |
 
-`.env` and `.env.local` are git-ignored. `.env.production` is committed (only contains the sourcemap toggle).
+`.env` and `.env.local` are git-ignored. `.env.production` is committed.
 
 ## Deploy checklist
 
-1. `npm run build` (must compile cleanly — zero warnings)
-2. `npx serve -s build -l 5000` and click through Home / About / Projects / 404
-3. `firebase deploy --only hosting`
-4. Verify https://berke-altiparmak.web.app/ live, including hard-refresh on a deep route (e.g. `/projects`) to confirm SPA rewrites work.
+1. `npm run build` (must compile cleanly — zero warnings).
+2. Run `/visual-check` to confirm screenshots still match the reference.
+3. `npx serve -s build -l 5000` and click through Front / Tech / Arts / Academia / 404 / TR.
+4. `firebase deploy --only hosting`.
+5. Verify https://berke-altiparmak.web.app/ live, including hard-refresh on `/about` (legacy URL → should redirect to `/`).

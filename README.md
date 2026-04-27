@@ -1,17 +1,17 @@
 # berke-altiparmak.web.app
 
-Personal portfolio site for **Berke Altıparmak** — developer and musician.
+**The Balpa Times** — a vintage-broadsheet portfolio for Berke Altıparmak, developer and musician.
 
 🌐 **Live:** https://berke-altiparmak.web.app
+
+A four-page newspaper (Front / Tech / Arts / Academia) with page-flip nav on desktop and a single-column NYT-mobile-style feed on mobile. Bilingual (TR / EN) toggle. Built with React 18 + Create React App, deployed to Firebase Hosting.
 
 ## Tech stack
 
 - React 18 (Create React App)
-- React Router v6
-- Framer Motion (animations)
-- react-tsparticles (animated backgrounds)
-- typewriter-effect
+- React Router v6 — single route + legacy redirects
 - Firebase Hosting (deploy target only — no Firebase SDK in the app)
+- Playwright (devDep) for visual-regression screenshots
 
 ## Getting started
 
@@ -22,16 +22,16 @@ npm install
 npm start
 ```
 
-Dev server runs at http://localhost:3000 with hot module reloading.
+Dev server runs at http://localhost:3000.
 
 ## Scripts
 
 | Command | What it does |
 |---|---|
 | `npm start` | Dev server with HMR on port 3000 |
-| `npm run build` | Production build to `./build` (sourcemaps disabled) |
-| `npm test` | Test runner (no tests yet) |
+| `npm run build` | Production build to `./build` (sourcemaps off) |
 | `npx serve -s build -l 5000` | Serve the production build locally on port 5000 |
+| `node scripts/screenshot.js http://localhost:5000` | Take Playwright screenshots of the impl into `screenshots/` |
 
 ## Project structure
 
@@ -39,41 +39,46 @@ Dev server runs at http://localhost:3000 with hot module reloading.
 src/
 ├── components/
 │   ├── ErrorBoundary.js
-│   ├── ParticlesBackground.js
-│   ├── ProjectCard.js
-│   ├── TypeInfo.js / TypeName.js
-│   └── layout/
-│       ├── PageLayout.js
-│       └── SocialLinks.js
-├── config/particles.js          # particle option factories
-├── data/projects.js             # portfolio project list
+│   └── newspaper/
+│       ├── Newspaper.js              # desktop shell
+│       ├── MobileNewspaper.js        # mobile feed
+│       ├── PageFlipOverlay.js
+│       ├── SectionLabel.js
+│       └── pages/
+│           ├── FrontPage.js
+│           ├── TechPage.js
+│           ├── ArtsPage.js
+│           └── AcademiaPage.js
+├── data/
+│   ├── content.js                    # CV data, TR + EN
+│   └── news.js                       # editorial wrapper, TR + EN
+├── hooks/
+│   └── useMediaQuery.js
 └── pages/
-    ├── Home.js
-    ├── About.js
-    ├── Projects.js
-    ├── More.js
+    ├── Home.js                       # viewport-switching shell
     └── NotFound.js
 ```
 
 ## Routes
 
-- `/` and `/home` → Home
-- `/about` → About
-- `/projects` → Projects
-- `/more` → More
+- `/` → Home (Newspaper desktop or MobileNewspaper)
+- `/home`, `/about`, `/projects`, `/more` → redirect to `/` (legacy URLs)
 - `*` → 404
 
-Firebase Hosting rewrites are configured for SPA routing (`firebase.json`), so deep links work on hard refresh.
+Firebase Hosting rewrites are configured for SPA routing so deep links work on hard refresh.
 
-## Environment
+## Design
 
-Optional variables (see `.env.example`):
+The newspaper aesthetic is high-fidelity to a design handoff (vintage 1920s–1960s broadsheet — blackletter nameplate, halftone portrait, drop caps, pull quotes, justified columns, paper grain). The handoff source is gitignored under `design_handoff_altiparmak_times/`. To compare implementation against design:
 
-| Var | Purpose |
-|---|---|
-| `REACT_APP_WEATHER_API` | OpenWeatherMap key (currently unused — Weather component removed) |
+```bash
+npx serve design_handoff_altiparmak_times -l 5001       # reference
+npx serve -s build -l 5000                              # impl
+node scripts/screenshot.js http://localhost:5001 --ref  # take ref shots
+node scripts/screenshot.js http://localhost:5000        # take impl shots
+```
 
-`GENERATE_SOURCEMAP=false` is set in `.env.production` to keep production sourcemaps out of the bundle.
+Output lands in `screenshots/` (also gitignored).
 
 ## Deploy
 
@@ -85,7 +90,7 @@ npm run build
 firebase deploy --only hosting
 ```
 
-After deploy, verify a deep route (e.g. `/projects`) on hard refresh to confirm SPA rewrites are working.
+After deploy, verify a deep route on hard refresh to confirm SPA rewrites are working.
 
 ## Contributing
 
@@ -93,4 +98,4 @@ Conventions and architectural notes for contributors (and AI assistants) live in
 
 ## License
 
-Beerware — see header in `src/App.js`. If you find this stuff worth it, you can buy Berke a beer.
+Beerware — see header in past versions of `src/App.js`. If you find this stuff worth it, you can buy Berke a beer.

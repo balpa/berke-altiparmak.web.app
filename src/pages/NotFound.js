@@ -1,27 +1,77 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import PageLayout from '../components/layout/PageLayout'
+
+const PAPER = '#f4ead2'
+const INK = '#1a1a1a'
+const ACCENT = '#a31621'
 
 function NotFound() {
   const navigate = useNavigate()
 
   return (
-    <PageLayout pageName="404">
-      <div className="middle">
-        <div className="about-middle-left" style={{ minHeight: 'unset', padding: '40px' }}>
-          <h1>Page not found</h1>
-          <p>The page you are looking for does not exist.</p>
-        </div>
-      </div>
-      <button
-        type="button"
-        id="home-button"
-        onClick={() => navigate('/home')}
-        aria-label="Go to home"
+    <div
+      style={{
+        minHeight: '100vh',
+        background: PAPER,
+        color: INK,
+        fontFamily: "'Lora', Georgia, serif",
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '24px',
+      }}
+    >
+      <div
+        style={{
+          maxWidth: 480,
+          width: '100%',
+          border: `3px double ${INK}`,
+          padding: '28px 24px',
+          textAlign: 'center',
+        }}
       >
-        Home
-      </button>
-    </PageLayout>
+        <div style={{ fontFamily: "'Special Elite', monospace", fontSize: 10, letterSpacing: '0.25em', marginBottom: 8 }}>
+          ── CLASSIFIED ──
+        </div>
+        <div
+          style={{
+            fontFamily: "'UnifrakturCook', 'UnifrakturMaguntia', serif",
+            fontSize: 44,
+            lineHeight: 1,
+            margin: '6px 0 12px',
+          }}
+        >
+          The Balpa Times
+        </div>
+        <div style={{ height: 1, background: INK, margin: '8px 0 18px' }} />
+        <div style={{ fontFamily: "'Special Elite', monospace", fontSize: 11, letterSpacing: '0.2em', color: ACCENT, marginBottom: 10 }}>
+          ★ MISSING ★
+        </div>
+        <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 32, fontWeight: 900, margin: '0 0 8px', lineHeight: 1.05 }}>
+          PAGE NOT FOUND
+        </h1>
+        <p style={{ fontStyle: 'italic', fontSize: 14, color: 'rgba(0,0,0,0.7)', margin: '0 0 20px' }}>
+          The story you are looking for has gone to press elsewhere.
+        </p>
+        <button
+          type="button"
+          onClick={() => navigate('/')}
+          aria-label="Return to front page"
+          style={{
+            background: INK,
+            color: PAPER,
+            border: `1px solid ${INK}`,
+            padding: '8px 18px',
+            fontFamily: "'Special Elite', monospace",
+            fontSize: 11,
+            letterSpacing: '0.2em',
+            cursor: 'pointer',
+          }}
+        >
+          ← FRONT PAGE
+        </button>
+      </div>
+    </div>
   )
 }
 

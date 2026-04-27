@@ -1,9 +1,9 @@
 {
-  "short_name": "Berke",
-  "name": "Berke Altıparmak — Developer & Musician",
+  "short_name": "Balpa Times",
+  "name": "The Balpa Times — Berke Altıparmak",
   "icons": [],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#f9dc0b",
-  "background_color": "#000000"
+  "theme_color": "#f4ead2",
+  "background_color": "#1a1410"
 }
