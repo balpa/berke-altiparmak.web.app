@@ -10,26 +10,63 @@ function ArtsPage({ p, c, lang, accent, paper, ink }) {
 
       <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 28 }}>
         <div>
-          <div
-            style={{
-              border: `1px solid ${ink}`,
-              aspectRatio: '16/9',
-              marginBottom: 8,
-              background: 'repeating-linear-gradient(0deg, rgba(0,0,0,0.12) 0 1px, transparent 1px 2.5px)',
-              position: 'relative',
-              display: 'flex',
-              alignItems: 'flex-end',
-              padding: 12,
-            }}
-            role="img"
-            aria-label={lang === 'tr' ? 'Sahne görüntüsü' : 'Stage photo'}
-          >
-            <div style={{ fontFamily: "'Special Elite', monospace", fontSize: 10, letterSpacing: '0.15em', background: paper, padding: '3px 8px' }}>
+          <div style={{ position: 'relative', marginBottom: 8 }}>
+            <div
+              style={{
+                border: `1px solid ${ink}`,
+                aspectRatio: '4/3',
+                backgroundImage: "url('/berke-stage.png')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center 30%',
+                filter: 'grayscale(100%) sepia(0.55) contrast(0.92) brightness(1.18)',
+                position: 'relative',
+                overflow: 'hidden',
+              }}
+              role="img"
+              aria-label={lang === 'tr' ? 'Sahne görüntüsü' : 'Stage photo'}
+            >
+              <div
+                aria-hidden="true"
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: paper,
+                  mixBlendMode: 'soft-light',
+                  opacity: 0.5,
+                  pointerEvents: 'none',
+                }}
+              />
+              <div
+                aria-hidden="true"
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  backgroundImage:
+                    'radial-gradient(rgba(0,0,0,0.7) 1px, transparent 1.6px)',
+                  backgroundSize: '4px 4px',
+                  mixBlendMode: 'multiply',
+                  opacity: 0.7,
+                  pointerEvents: 'none',
+                }}
+              />
+            </div>
+            <div
+              style={{
+                position: 'absolute',
+                bottom: 12,
+                left: 12,
+                fontFamily: "'Special Elite', monospace",
+                fontSize: 10,
+                letterSpacing: '0.15em',
+                background: paper,
+                padding: '3px 8px',
+              }}
+            >
               {lang === 'tr' ? 'SAHNE GÖRÜNTÜSÜ — ARŞİV' : 'STAGE PHOTO — ARCHIVE'}
             </div>
           </div>
           <div style={{ fontFamily: "'Special Elite', monospace", fontSize: 9.5, opacity: 0.65, marginBottom: 18 }}>
-            {lang === 'tr' ? 'Ankara — sahne ışıkları altında bir prova akşamı.' : 'Ankara — a rehearsal night under stage lights.'}
+            {lang === 'tr' ? 'İstanbul — sahne ışıkları altında bir prova akşamı.' : 'Istanbul — a rehearsal night under stage lights.'}
           </div>
 
           <div style={{ columnCount: 2, columnGap: 22, fontSize: 14, lineHeight: 1.65, textAlign: 'justify', hyphens: 'auto' }}>
@@ -39,8 +76,8 @@ function ArtsPage({ p, c, lang, accent, paper, ink }) {
             ))}
             <p style={{ marginTop: 10 }}>
               {lang === 'tr'
-                ? "ABB sahnesinden Siemens'e, sivil derneklere uzanan repertuvar, klasik Türk müziğinin ritim ve makam çatısı üzerine kurulu. Aynı çatı, mobil uygulamadaki renk teorisini de bilgilendiren çatı."
-                : 'From the ABB stage to Siemens to civic associations, the repertoire is built on the rhythm-and-makam frame of classical Turkish music. The same frame informs the color theory in the mobile app.'}
+                ? "Repertuvar, ABB ve Siemens gibi kurumsal sahnelerden İstanbul'un kültür merkezlerine — Kartal Bülent Ecevit, Akatlar, Cemal Reşit Rey ve daha fazlası — sivil ve sosyal derneklere uzanıyor. Hepsinin altında yatan çatı aynı: klasik Türk müziğinin ritim ve makam yapısı; aynı yapı mobil uygulamadaki renk teorisini de bilgilendiriyor."
+                : "The repertoire stretches from corporate stages such as ABB and Siemens, through Istanbul's cultural centers — Kartal Bülent Ecevit, Akatlar, Cemal Reşit Rey and others — to civic and social associations. The frame underneath stays the same: the rhythm-and-makam structure of classical Turkish music, the same structure that informs the color theory in the mobile app."}
             </p>
           </div>
 
@@ -63,15 +100,57 @@ function ArtsPage({ p, c, lang, accent, paper, ink }) {
           </div>
 
           <SectionLabel ink={ink}>{lang === 'tr' ? 'SAHNELER' : 'STAGES'}</SectionLabel>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12 }}>
+          <div style={{ border: `1px solid ${ink}` }}>
             {[
-              { v: 'ABB', l: lang === 'tr' ? 'Çok uluslu' : 'Multinational' },
-              { v: 'SIEMENS', l: lang === 'tr' ? 'Kurumsal salon' : 'Corporate hall' },
-              { v: lang === 'tr' ? 'DERNEKLER' : 'ASSOC.', l: lang === 'tr' ? 'Sivil oluşumlar' : 'Civic groups' },
-            ].map((s, i) => (
-              <div key={i} style={{ border: `1px solid ${ink}`, padding: 10 }}>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontWeight: 900, fontSize: 16 }}>{s.v}</div>
-                <div style={{ fontSize: 11, fontStyle: 'italic' }}>{s.l}</div>
+              {
+                cat: lang === 'tr' ? 'KURUMSAL' : 'CORPORATE',
+                venues: 'ABB · Siemens',
+              },
+              {
+                cat: lang === 'tr' ? "İSTANBUL KÜLTÜR MERKEZLERİ" : 'ISTANBUL CULTURAL CENTERS',
+                venues:
+                  lang === 'tr'
+                    ? 'Kartal Bülent Ecevit Kültür Merkezi · Akatlar Kültür Merkezi · Cemal Reşit Rey Konser Salonu · ve diğerleri'
+                    : 'Kartal Bülent Ecevit · Akatlar · Cemal Reşit Rey Concert Hall · and others',
+              },
+              {
+                cat: lang === 'tr' ? 'SİVİL & SOSYAL' : 'CIVIC & SOCIAL',
+                venues:
+                  lang === 'tr'
+                    ? 'Çeşitli dernek ve sosyal oluşumlar'
+                    : 'Various civic & social associations',
+              },
+            ].map((row, i) => (
+              <div
+                key={i}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '180px 1fr',
+                  gap: 14,
+                  padding: '10px 12px',
+                  borderTop: i === 0 ? 'none' : `1px dashed ${ink}`,
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: "'Special Elite', monospace",
+                    fontSize: 10.5,
+                    letterSpacing: '0.15em',
+                    color: accent,
+                    alignSelf: 'center',
+                  }}
+                >
+                  {row.cat}
+                </div>
+                <div
+                  style={{
+                    fontFamily: "'Playfair Display', serif",
+                    fontSize: 13.5,
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {row.venues}
+                </div>
               </div>
             ))}
           </div>

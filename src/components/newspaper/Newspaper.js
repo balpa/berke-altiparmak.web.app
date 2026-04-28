@@ -163,9 +163,8 @@ function Newspaper() {
                   <div style={{ textAlign: 'center', padding: '0 8px' }}>
                     <div
                       style={{
-                        fontFamily: "'UnifrakturCook', 'UnifrakturMaguntia', serif",
-                        fontWeight: 700,
-                        fontSize: 58,
+                        fontFamily: "'Cloister Black', 'UnifrakturMaguntia', serif",
+                        fontSize: 76,
                         lineHeight: 0.95,
                         letterSpacing: '0.005em',
                         whiteSpace: 'nowrap',
@@ -190,18 +189,19 @@ function Newspaper() {
 
                 <div
                   style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
+                    display: 'grid',
+                    gridTemplateColumns: '1fr auto 1fr',
                     alignItems: 'baseline',
+                    gap: 16,
                     fontFamily: FONT_BODY,
                     fontSize: 11,
                     padding: '5px 4px',
                     borderBottom: `1px solid ${INK}`,
                   }}
                 >
-                  <span style={{ fontVariant: 'small-caps', letterSpacing: '0.04em' }}>{n.vol}</span>
-                  <span style={{ fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: 11.5 }}>{today}</span>
-                  <span style={{ fontVariant: 'small-caps', letterSpacing: '0.04em' }}>{lang === 'tr' ? 'Fiyat: Bedava' : 'Price: Free'}</span>
+                  <span style={{ fontVariant: 'small-caps', letterSpacing: '0.04em', textAlign: 'left' }}>{n.vol}</span>
+                  <span style={{ fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: 11.5, textAlign: 'center' }}>{today}</span>
+                  <span style={{ fontVariant: 'small-caps', letterSpacing: '0.04em', textAlign: 'right' }}>{lang === 'tr' ? 'Fiyat: Bedava' : 'Price: Free'}</span>
                 </div>
 
                 <div
@@ -229,7 +229,7 @@ function Newspaper() {
                     borderBottom: `1px solid ${INK}`,
                   }}
                 >
-                  <div style={{ fontFamily: "'UnifrakturCook', serif", fontWeight: 700, fontSize: 28, lineHeight: 1 }}>{n.masthead}</div>
+                  <div style={{ fontFamily: "'Cloister Black', 'UnifrakturMaguntia', serif", fontSize: 34, lineHeight: 1 }}>{n.masthead}</div>
                   <div style={{ fontFamily: FONT_BODY, fontSize: 11, fontStyle: 'italic' }}>
                     {today} · {currentPage.slug} — {currentPage.title}
                   </div>

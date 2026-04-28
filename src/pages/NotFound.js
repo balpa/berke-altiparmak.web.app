@@ -35,13 +35,13 @@ function NotFound() {
         </div>
         <div
           style={{
-            fontFamily: "'UnifrakturCook', 'UnifrakturMaguntia', serif",
-            fontSize: 44,
+            fontFamily: "'Cloister Black', 'UnifrakturMaguntia', serif",
+            fontSize: 56,
             lineHeight: 1,
             margin: '6px 0 12px',
           }}
         >
-          The Balpa Times
+          Berke Altıparmak
         </div>
         <div style={{ height: 1, background: INK, margin: '8px 0 18px' }} />
         <div style={{ fontFamily: "'Special Elite', monospace", fontSize: 11, letterSpacing: '0.2em', color: ACCENT, marginBottom: 10 }}>

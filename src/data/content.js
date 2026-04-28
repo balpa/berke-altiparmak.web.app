@@ -77,8 +77,8 @@ const content = {
       },
     ],
     skills: {
-      Languages: ['JavaScript', 'Go', 'PHP', 'Python', 'Swift'],
-      Frontend: ['Vue.js', 'React', 'React Native', 'SwiftUI', 'Tailwind'],
+      Languages: ['JavaScript', 'Go', 'PHP', 'Python'],
+      Frontend: ['Vue.js', 'React', 'React Native'],
       Backend: ['Go (Golang)', 'PHP / Laravel', 'Node.js', 'Microservices'],
       Cloud: ['AWS · EKS', 'Kubernetes', 'Terraform · Helm', 'Docker · CI/CD', 'Datadog'],
       Data: ['scikit-learn', 'NumPy · Pandas', 'NLP'],
@@ -99,7 +99,7 @@ const content = {
       tag: 'OFF THE CLOCK',
       lines: [
         'Professional musician performing at corporate and institutional events.',
-        'Stages played: ABB, Siemens, civic & social associations.',
+        "Stages played: corporate halls (ABB, Siemens), Istanbul cultural centers (Kartal Bülent Ecevit, Akatlar, Cemal Reşit Rey, and others), and civic & social associations.",
         'Reads & follows: physics, cosmology, quantum computing — anything that puts a clock on the universe.',
       ],
     },
@@ -187,8 +187,8 @@ const content = {
       },
     ],
     skills: {
-      Diller: ['JavaScript', 'Go', 'PHP', 'Python', 'Swift'],
-      Frontend: ['Vue.js', 'React', 'React Native', 'SwiftUI', 'Tailwind'],
+      Diller: ['JavaScript', 'Go', 'PHP', 'Python'],
+      Frontend: ['Vue.js', 'React', 'React Native'],
       Backend: ['Go (Golang)', 'PHP / Laravel', 'Node.js', 'Microservices'],
       Cloud: ['AWS · EKS', 'Kubernetes', 'Terraform · Helm', 'Docker · CI/CD', 'Datadog'],
       Data: ['scikit-learn', 'NumPy · Pandas', 'NLP'],
@@ -209,7 +209,7 @@ const content = {
       tag: 'MESAİ DIŞI',
       lines: [
         'Profesyonel müzisyen — kurumsal ve resmi etkinliklerde sahne alıyor.',
-        'Sahne aldığı yerler: ABB, Siemens, sivil ve sosyal dernekler.',
+        "Sahne aldığı yerler: kurumsal salonlar (ABB, Siemens), İstanbul kültür merkezleri (Kartal Bülent Ecevit, Akatlar, Cemal Reşit Rey ve diğerleri), sivil ve sosyal dernekler.",
         'Takip ettikleri: fizik, kozmoloji, kuantum bilişim — evrene saat tutan her şey.',
       ],
     },

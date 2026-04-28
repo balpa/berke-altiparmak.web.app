@@ -87,15 +87,14 @@ function MobileNewspaper() {
         <div style={{ height: 1, background: INK, marginBottom: 6 }} />
         <div
           style={{
-            fontFamily: "'UnifrakturCook', 'UnifrakturMaguntia', serif",
-            fontWeight: 700,
-            fontSize: 38,
+            fontFamily: "'Cloister Black', 'UnifrakturMaguntia', serif",
+            fontSize: 46,
             lineHeight: 1,
             letterSpacing: '0.005em',
             whiteSpace: 'nowrap',
           }}
         >
-          The Balpa Times
+          Berke Altıparmak
         </div>
         <div style={{ height: 1, background: INK, marginTop: 6 }} />
         <div style={{ fontStyle: 'italic', fontSize: 11, padding: '6px 0 4px', letterSpacing: '0.02em' }}>{n.motto}</div>

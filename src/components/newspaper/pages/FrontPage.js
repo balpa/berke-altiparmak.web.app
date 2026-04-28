@@ -2,6 +2,13 @@ import React from 'react'
 import SectionLabel from '../SectionLabel'
 
 function FrontPage({ p, c, lang, accent, paper, ink }) {
+  const articleText = [p.lead, p.lead2, p.secondary?.body].filter(Boolean).join(' ')
+  const wordCount = articleText.trim().split(/\s+/).length
+  const minutes = Math.max(1, Math.round(wordCount / (lang === 'en' ? 225 : 200)))
+  const wordsLabel = lang === 'tr' ? 'sözcük' : 'words'
+  const readLabel = lang === 'tr' ? `${minutes} dakikalık okuma` : `${minutes} min read`
+  const correspondent = lang === 'tr' ? 'İstanbul Muhabiri' : 'Istanbul correspondent'
+
   return (
     <article>
       <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 28 }}>
@@ -36,7 +43,7 @@ function FrontPage({ p, c, lang, accent, paper, ink }) {
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 11, letterSpacing: '0.12em', marginBottom: 14 }}>
             <span style={{ background: ink, color: paper, padding: '3px 8px' }}>{p.byline}</span>
             <span style={{ opacity: 0.55, fontStyle: 'italic' }}>
-              {lang === 'tr' ? 'Bursa Muhabiri · 2200 sözcük · 9 dakikalık okuma' : 'Bursa correspondent · 2,200 words · 9 min read'}
+              {`${correspondent} · ${wordCount} ${wordsLabel} · ${readLabel}`}
             </span>
           </div>
 

@@ -5,7 +5,7 @@ const STATS_EN = [
   ['Singapore Airlines team', '3 years'],
   ['Annual fliers reached', '20M+'],
   ['Customer meetings led', '100+'],
-  ['Months @ Success rating', '36 / 36'],
+  ['Months @ Success rating', '100%'],
   ['AWS Game Day 2026', '1st place'],
 ]
 
@@ -13,7 +13,7 @@ const STATS_TR = [
   ['Singapore Airlines ekibi', '3 yıl'],
   ['Yıllık ulaşılan yolcu', '20M+'],
   ['Müşteri toplantısı', '100+'],
-  ['"Success" değerlendirmesi', '36 / 36'],
+  ['"Success" değerlendirmesi', '%100'],
   ['AWS Game Day 2026', 'Birincilik'],
 ]
 
@@ -101,12 +101,11 @@ function TechPage({ p, c, lang, accent, paper, ink }) {
             <div style={{ fontFamily: "'Special Elite', monospace", fontSize: 9, letterSpacing: '0.2em', marginBottom: 6 }}>
               — {lang === 'tr' ? 'İLAN' : 'ADVERTISEMENT'} —
             </div>
-            <div style={{ fontFamily: "'Playfair Display', serif", fontWeight: 900, fontSize: 18, lineHeight: 1.05, marginBottom: 4 }}>
-              GOD TIER REVIEWER
+            <div style={{ fontFamily: "'Playfair Display', serif", fontWeight: 900, fontSize: 22, lineHeight: 1.05, marginBottom: 4 }}>KOMA</div>
+            <div style={{ fontStyle: 'italic', fontSize: 11, marginBottom: 8 }}>
+              {lang === 'tr' ? 'Türk müziği için ritim çalıştırıcısı.' : 'A rhythm trainer for Turkish music.'}
             </div>
-            <div style={{ fontStyle: 'italic', fontSize: 11, marginBottom: 6 }}>
-              {lang === 'tr' ? "Gemini destekli VS Code code review'ı." : 'Gemini-powered VS Code code review.'}
-            </div>
+            <div style={{ fontFamily: "'Special Elite', monospace", fontSize: 10, letterSpacing: '0.15em', color: accent }}>★ REACT NATIVE · EXPO · AUDIO ★</div>
           </div>
 
           <SectionLabel small ink={ink}>{lang === 'tr' ? 'NOT DEFTERİ' : 'FIELD NOTES'}</SectionLabel>
